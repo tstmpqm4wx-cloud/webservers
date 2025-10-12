@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Roles & Lifecycle — Web Servers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Core roles of web servers, request lifecycle, performance, and security based on my research." />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <h1>Roles & Lifecycle</h1>
+        <p class="tagline">How servers accept, process, secure, and accelerate requests</p>
+    </div>
+</header>
+
+<nav class="site-nav" aria-label="Primary">
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
+            <li><a aria-current="page" href="http-lifecycle.html">Roles & Lifecycle</a></li>
+            <li><a href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="resources.html">References & Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main" class="container" role="main">
+    <section class="panel" aria-labelledby="roles-heading">
+        <h2 id="roles-heading">Core Roles</h2>
+        <p>
+            Web servers play several key roles. They accept requests, locate or generate the requested resource, and respond—serving static files (HTML, CSS, JS) or dynamic content via backend scripts and frameworks. They optimize performance by caching frequently accessed resources, compressing files to reduce bandwidth, and adopting HTTP/2 and HTTP/3 for faster connections. They are also security gatekeepers: terminating TLS/SSL for HTTPS, enforcing authentication/authorization, and defending against threats like denial-of-service or suspicious requests. Many operate as reverse proxies or load balancers, distributing traffic across backends for scalability and redundancy. The choice and configuration of a web server directly affects speed, security, and even SEO.
+        </p>
+    </section>
+
+    <section class="panel" aria-labelledby="lifecycle-heading">
+        <h2 id="lifecycle-heading">High-Level Request Lifecycle</h2>
+        <ol class="steps">
+            <li><strong>URL & DNS:</strong> Browser resolves the domain to an IP.</li>
+            <li><strong>TCP/TLS:</strong> Connection opens; TLS handshake for HTTPS.</li>
+            <li><strong>Request:</strong> Browser sends method, path, headers, and optional body.</li>
+            <li><strong>Routing:</strong> Server matches routes, serves static files or proxies to an app.</li>
+            <li><strong>Response:</strong> Status code, headers (cache, security), and body returned.</li>
+            <li><strong>Render & Cache:</strong> Browser renders, may cache per headers.</li>
+        </ol>
+    </section>
+
+    <section class="panel" aria-labelledby="perf-heading">
+        <h2 id="perf-heading">Performance Touchpoints</h2>
+        <ul>
+            <li>Event-driven I/O (e.g., Nginx, LiteSpeed) for massive concurrency</li>
+            <li>Compression (gzip, brotli) and asset minification</li>
+            <li>CDN/edge caching and cache directives (Cache-Control, ETag)</li>
+            <li>HTTP/2 multiplexing and HTTP/3/QUIC to cut latency</li>
+        </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="security-heading">
+        <h2 id="security-heading">Security Responsibilities</h2>
+        <ul>
+            <li>TLS/SSL termination; HSTS and modern cipher suites</li>
+            <li>AuthN/AuthZ enforcement; rate limiting and WAF rules</li>
+            <li>Logging/monitoring for anomaly and DDoS detection</li>
+            <li>Automated cert management (e.g., Let’s Encrypt)</li>
+        </ul>
+    </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <p><small>Back to <a href="index.html">Home</a></small></p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>FAQ — Web Servers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="FAQ grounded in my research: challenges, protocols, edge/serverless, and security." />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <h1>FAQ</h1>
+        <p class="tagline">From today’s pain points to tomorrow’s trends</p>
+    </div>
+</header>
+
+<nav class="site-nav" aria-label="Primary">
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
+            <li><a href="http-lifecycle.html">Roles & Lifecycle</a></li>
+            <li><a href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="resources.html">References & Resources</a></li>
+            <li><a aria-current="page" href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main" class="container" role="main">
+    <section class="panel faqs">
+        <h2>Questions</h2>
+
+        <details>
+            <summary>Why do servers keep moving to HTTP/3 and QUIC?</summary>
+            <p>To reduce latency and improve reliability, especially on mobile and high-latency networks. QUIC uses UDP with features like connection migration and better loss recovery.</p>
+        </details>
+
+        <details>
+            <summary>What are the biggest ongoing challenges?</summary>
+            <p>Security (misconfigurations, unpatched CVEs, DDoS), scaling for unpredictable spikes, and the rapid pace of protocol/standards change that requires continuous learning.</p>
+        </details>
+
+        <details>
+            <summary>How do edge computing and CDNs change server design?</summary>
+            <p>They push content and logic closer to users, cutting round-trip time and absorbing surges; origin servers focus more on dynamic and stateful work.</p>
+        </details>
+
+        <details>
+            <summary>Where does serverless fit with web servers?</summary>
+            <p>Serverless can offload some dynamic tasks and autoscale without managing machines; many stacks combine reverse proxies, origins, and serverless functions.</p>
+        </details>
+
+        <details>
+            <summary>What future trends should admins plan for?</summary>
+            <p>Broader HTTP/3 adoption, AI-assisted ops (predictive scaling, anomaly detection), zero-trust security, quantum-resistant crypto, and greener, energy-efficient hosting.</p>
+        </details>
+    </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <p><small>Back to <a href="index.html">Home</a></small></p>
+    </div>
+</footer>
+</body>
+</html>

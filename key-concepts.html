@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Key Concepts — Web Servers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Glossary of core server and HTTP terms grounded in my Assignment #1 research." />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <h1>Key Concepts</h1>
+        <p class="tagline">Quick definitions from the backbone of web servers</p>
+    </div>
+</header>
+
+<nav class="site-nav" aria-label="Primary">
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
+            <li><a href="http-lifecycle.html">Roles & Lifecycle</a></li>
+            <li><a aria-current="page" href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="resources.html">References & Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main" class="container" role="main">
+    <dl class="panel glossary">
+        <dt>HTTP / HTTPS</dt>
+        <dd>Application protocols for web requests/responses; HTTPS adds TLS encryption and integrity.</dd>
+
+        <dt>CGI (Common Gateway Interface)</dt>
+        <dd>Early mechanism that let servers run programs to generate dynamic content.</dd>
+
+        <dt>Reverse Proxy</dt>
+        <dd>Fronts one or more apps, handling TLS, caching, routing, and load balancing.</dd>
+
+        <dt>Event-Driven Architecture</dt>
+        <dd>Non-blocking I/O model (e.g., Nginx, LiteSpeed) enabling high concurrency.</dd>
+
+        <dt>HTTP/2 & HTTP/3 (QUIC)</dt>
+        <dd>Modern protocol versions improving latency via multiplexing (H2) and UDP-based QUIC (H3).</dd>
+
+        <dt>TLS/SSL</dt>
+        <dd>Cryptography for HTTPS; often terminated at the web server; enables HSTS and modern ciphers.</dd>
+
+        <dt>Caching</dt>
+        <dd>Storing responses to serve faster (browser, CDN, reverse proxy) using headers like Cache-Control/ETag.</dd>
+
+        <dt>Load Balancer</dt>
+        <dd>Distributes traffic across backend instances for scale and resilience.</dd>
+
+        <dt>Edge Computing / CDN</dt>
+        <dd>Serving content closer to users geographically to reduce latency and absorb traffic.</dd>
+
+        <dt>Serverless</dt>
+        <dd>Managed compute where the platform handles scaling; complements or replaces traditional servers for some tasks.</dd>
+
+        <dt>Let’s Encrypt</dt>
+        <dd>Automated certificate authority enabling free TLS certificates and renewals.</dd>
+
+        <dt>Zero-Trust</dt>
+        <dd>Security model that treats every request as untrusted, enforcing continuous verification.</dd>
+    </dl>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <p><small>Back to <a href="index.html">Home</a></small></p>
+    </div>
+</footer>
+</body>
+</html>
