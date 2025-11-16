@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Web Servers — Self-Assessment Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- If you already have a global CSS file (e.g., styles.css), link it here -->
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+
+    <style>
+        /* ====== Basic page layout ====== */
+        body {
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          margin: 0;
+          background: #0d1117;
+          color: #e6edf3;
+          line-height: 1.6;
+        }
+
+        header {
+          background: #161b22;
+          border-bottom: 1px solid #30363d;
+          padding: 1rem 1.5rem;
+        }
+
+        header h1 {
+          margin: 0;
+          font-size: 1.4rem;
+        }
+
+        header p {
+          margin: 0.25rem 0 0;
+          font-size: 0.9rem;
+          color: #8b949e;
+        }
+
+        nav {
+          margin-top: 0.75rem;
+        }
+
+        nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #c9d1d9;
+          padding: 0.35rem 0.75rem;
+          border-radius: 999px;
+          font-size: 0.9rem;
+          border: 1px solid transparent;
+        }
+
+        nav a:hover {
+          background: #21262d;
+          border-color: #30363d;
+        }
+
+        nav a.active {
+          background: #1f6feb;
+          color: #f0f6fc;
+          border-color: #1f6feb;
+        }
+
+        main {
+          max-width: 900px;
+          margin: 2rem auto;
+          padding: 0 1.25rem 3rem;
+        }
+
+        h2 {
+          margin-top: 0;
+          font-size: 1.6rem;
+        }
+
+        .intro {
+          margin-bottom: 1.5rem;
+          color: #8b949e;
+        }
+
+        /* ====== Card-style container for the quiz ====== */
+        .card {
+          background: #161b22;
+          border: 1px solid #30363d;
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        fieldset {
+          border: 1px solid #30363d;
+          border-radius: 0.75rem;
+          padding: 1rem 1.25rem 1.1rem;
+        }
+
+        legend {
+          padding: 0 0.35rem;
+          font-weight: 600;
+        }
+
+        .question-text {
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+        }
+
+        .hint {
+          font-size: 0.85rem;
+          color: #8b949e;
+          margin-top: 0.25rem;
+        }
+
+        label {
+          display: block;
+          cursor: pointer;
+          margin: 0.25rem 0;
+        }
+
+        input[type="text"] {
+          width: 100%;
+          max-width: 420px;
+          padding: 0.45rem 0.6rem;
+          border-radius: 0.5rem;
+          border: 1px solid #30363d;
+          background: #0d1117;
+          color: #e6edf3;
+          font-size: 0.95rem;
+        }
+
+        input[type="text"]:focus {
+          outline: none;
+          border-color: #1f6feb;
+          box-shadow: 0 0 0 1px #1f6feb;
+        }
+
+        .options-group {
+          margin-top: 0.35rem;
+        }
+
+        .options-group label {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.25rem 0.35rem;
+          border-radius: 0.4rem;
+        }
+
+        .options-group label:hover {
+          background: #21262d;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+          accent-color: #1f6feb;
+        }
+
+        /* ====== Buttons ====== */
+        .button-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          margin-top: 0.75rem;
+        }
+
+        button {
+          border: none;
+          border-radius: 999px;
+          padding: 0.55rem 1.2rem;
+          font-size: 0.95rem;
+          cursor: pointer;
+          font-weight: 500;
+        }
+
+        .btn-primary {
+          background: #1f6feb;
+          color: #f0f6fc;
+        }
+
+        .btn-primary:hover {
+          background: #265dc8;
+        }
+
+        .btn-ghost {
+          background: transparent;
+          color: #c9d1d9;
+          border: 1px solid #30363d;
+        }
+
+        .btn-ghost:hover {
+          background: #21262d;
+        }
+
+        /* ====== Results ====== */
+        .hidden {
+          display: none;
+        }
+
+        #results {
+          margin-top: 1.5rem;
+          padding: 1.25rem 1.5rem;
+          border-radius: 0.75rem;
+          border: 1px solid #30363d;
+          background: #0d1117;
+        }
+
+        #overall-result {
+          font-size: 1.1rem;
+          margin-bottom: 0.25rem;
+          font-weight: 600;
+        }
+
+        #overall-score {
+          margin-bottom: 0.75rem;
+          color: #8b949e;
+        }
+
+        .pass {
+          color: #3fb950;
+        }
+
+        .fail {
+          color: #f85149;
+        }
+
+        .question-feedback {
+          margin-top: 0.35rem;
+          font-size: 0.9rem;
+        }
+
+        .correct {
+          color: #3fb950;
+        }
+
+        .incorrect {
+          color: #f85149;
+        }
+
+        .answer-key {
+          color: #8b949e;
+          font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+          .card {
+            padding: 1.1rem;
+          }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Web Servers — Foundations &amp; Evolution</h1>
+    <p>IT 3203 • Milestone #2 — Dynamic Frontend Quiz</p>
+
+    <!-- Update this menu to match your other pages -->
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
+            <li><a href="roles-lifecycle.html">Roles &amp; Lifecycle</a></li>
+            <li><a href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="references.html">References &amp; Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="quiz.html" class="active">Self-Assessment Quiz</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Self-Assessment Quiz</h2>
+    <p class="intro">
+        Test your understanding of web servers after reading the content on this site.
+        Your score and detailed feedback for each question will appear immediately after you submit.
+    </p>
+
+    <section class="card" aria-label="Web servers quiz">
+        <form id="quiz-form">
+            <!-- Q1: Fill-in-the-blank -->
+            <fieldset>
+                <legend>Question 1 — Fill in the blank</legend>
+                <p class="question-text">
+                    1. The most common protocol used by web servers to communicate with web browsers is
+                    <strong>____</strong>.
+                </p>
+                <label for="q1-input" class="sr-only">Protocol name</label>
+                <input
+                        type="text"
+                        id="q1-input"
+                        name="q1"
+                        autocomplete="off"
+                        placeholder="Type the protocol acronym (e.g., HTTP)"
+                />
+                <p class="hint">Hint: It’s the core application-layer protocol of the web.</p>
+                <div id="q1-feedback" class="question-feedback"></div>
+            </fieldset>
+
+            <!-- Q2: Single-choice (radio) -->
+            <fieldset>
+                <legend>Question 2 — Multiple choice</legend>
+                <p class="question-text">
+                    2. Which option best describes a <strong>web server</strong>?
+                </p>
+                <div class="options-group">
+                    <label>
+                        <input type="radio" name="q2" value="a" />
+                        A program that only stores passwords for websites.
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b" />
+                        Software running on a machine that receives HTTP requests and returns web content in responses.
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c" />
+                        A browser plugin for rendering HTML pages.
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d" />
+                        An operating system for mobile devices.
+                    </label>
+                </div>
+                <div id="q2-feedback" class="question-feedback"></div>
+            </fieldset>
+
+            <!-- Q3: Single-choice (radio) -->
+            <fieldset>
+                <legend>Question 3 — Multiple choice</legend>
+                <p class="question-text">
+                    3. When we say a web server is serving <strong>static content</strong>, what does that mean?
+                </p>
+                <div class="options-group">
+                    <label>
+                        <input type="radio" name="q3" value="a" />
+                        It generates a new HTML page from a database on every request.
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b" />
+                        It returns pre-existing files (like HTML, CSS, images) without changing them per user.
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c" />
+                        It only handles encrypted traffic.
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d" />
+                        It automatically balances traffic across many servers.
+                    </label>
+                </div>
+                <div id="q3-feedback" class="question-feedback"></div>
+            </fieldset>
+
+            <!-- Q4: Single-choice (radio) -->
+            <fieldset>
+                <legend>Question 4 — Multiple choice</legend>
+                <p class="question-text">
+                    4. Which of the following is <strong>most directly</strong> related to the
+                    <em>performance</em> of a web server?
+                </p>
+                <div class="options-group">
+                    <label>
+                        <input type="radio" name="q4" value="a" />
+                        The color theme of the website.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b" />
+                        How many requests per second the server can handle while maintaining low response time.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c" />
+                        The brand of the client’s laptop.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d" />
+                        The number of images on the user’s desktop background.
+                    </label>
+                </div>
+                <div id="q4-feedback" class="question-feedback"></div>
+            </fieldset>
+
+            <!-- Q5: Multi-select (checkbox) -->
+            <fieldset>
+                <legend>Question 5 — Multi-selection</legend>
+                <p class="question-text">
+                    5. Which of the following are <strong>common responsibilities</strong> of a production web server?
+                    (Select <strong>all</strong> that apply.)
+                </p>
+                <div class="options-group">
+                    <label>
+                        <input type="checkbox" name="q5" value="static" />
+                        Serving static assets like HTML, CSS, JavaScript, and images.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="q5" value="https" />
+                        Terminating HTTPS (TLS) connections so traffic between browser and server is encrypted.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="q5" value="logging" />
+                        Logging requests and responses for monitoring and troubleshooting.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="q5" value="monitor" />
+                        Rendering graphics directly to the user’s monitor hardware.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="q5" value="desktop-backup" />
+                        Backing up every file on each visitor’s personal computer.
+                    </label>
+                </div>
+                <div class="hint">
+                    Hint: Think about availability, security, and observability in real-world deployments.
+                </div>
+                <div id="q5-feedback" class="question-feedback"></div>
+            </fieldset>
+
+            <!-- Buttons -->
+            <div class="button-row">
+                <button type="button" class="btn-primary" onclick="gradeQuiz()">
+                    Submit quiz
+                </button>
+                <button type="button" class="btn-ghost" onclick="resetQuiz()">
+                    Reset / Retake
+                </button>
+            </div>
+        </form>
+
+        <!-- Results section -->
+        <section id="results" class="hidden" aria-live="polite">
+            <div id="overall-result"></div>
+            <div id="overall-score"></div>
+            <div id="detailed-results"></div>
+        </section>
+    </section>
+</main>
+
+<script>
+    // ===== Quiz grading logic =====
+
+    function gradeQuiz() {
+      const form = document.getElementById("quiz-form");
+      const resultsSection = document.getElementById("results");
+      const overallResultEl = document.getElementById("overall-result");
+      const overallScoreEl = document.getElementById("overall-score");
+      const detailedResultsEl = document.getElementById("detailed-results");
+
+      // Clear old feedback
+      ["q1", "q2", "q3", "q4", "q5"].forEach((id) => {
+        const fb = document.getElementById(id + "-feedback");
+        if (fb) {
+          fb.textContent = "";
+          fb.className = "question-feedback";
+        }
+      });
+      overallResultEl.textContent = "";
+      overallScoreEl.textContent = "";
+      detailedResultsEl.innerHTML = "";
+
+      let score = 0;
+      const totalQuestions = 5;
+
+      // ---- Question 1 (fill in the blank) ----
+      const q1Input = form.q1.value.trim().toLowerCase();
+      const q1Feedback = document.getElementById("q1-feedback");
+      const correctQ1 = "http";
+
+      if (q1Input === correctQ1) {
+        score++;
+        q1Feedback.textContent = "Correct! HTTP is the primary protocol for web traffic.";
+        q1Feedback.classList.add("correct");
+      } else {
+        q1Feedback.innerHTML =
+          '<span class="incorrect">Incorrect.</span> ' +
+          '<span class="answer-key">Correct answer: HTTP.</span>';
+      }
+
+      // ---- Question 2 (single choice) ----
+      const q2Value = form.q2.value;
+      const q2Feedback = document.getElementById("q2-feedback");
+      const correctQ2 = "b";
+
+      if (q2Value === correctQ2) {
+        score++;
+        q2Feedback.textContent =
+          "Correct! A web server receives HTTP requests and sends back responses.";
+        q2Feedback.classList.add("correct");
+      } else {
+        q2Feedback.innerHTML =
+          '<span class="incorrect">Incorrect.</span> ' +
+          '<span class="answer-key">Correct answer: ' +
+          "Software running on a machine that receives HTTP requests and returns web content." +
+          "</span>";
+      }
+
+      // ---- Question 3 (single choice) ----
+      const q3Value = form.q3.value;
+      const q3Feedback = document.getElementById("q3-feedback");
+      const correctQ3 = "b";
+
+      if (q3Value === correctQ3) {
+        score++;
+        q3Feedback.textContent =
+          "Correct! Static content is returned from existing files without per-user changes.";
+        q3Feedback.classList.add("correct");
+      } else {
+        q3Feedback.innerHTML =
+          '<span class="incorrect">Incorrect.</span> ' +
+          '<span class="answer-key">Correct answer: Returning pre-existing files without modifying them per user.</span>';
+      }
+
+      // ---- Question 4 (single choice) ----
+      const q4Value = form.q4.value;
+      const q4Feedback = document.getElementById("q4-feedback");
+      const correctQ4 = "b";
+
+      if (q4Value === correctQ4) {
+        score++;
+        q4Feedback.textContent =
+          "Correct! Performance is about handling many requests with low response time.";
+        q4Feedback.classList.add("correct");
+      } else {
+        q4Feedback.innerHTML =
+          '<span class="incorrect">Incorrect.</span> ' +
+          '<span class="answer-key">Correct answer: How many requests per second the server can handle while staying responsive.</span>';
+      }
+
+      // ---- Question 5 (multi-select) ----
+      const q5Feedback = document.getElementById("q5-feedback");
+      const correctQ5 = ["static", "https", "logging"]; // all of these, and only these, must be selected
+
+      const selectedQ5 = Array.from(
+        form.querySelectorAll('input[name="q5"]:checked')
+      ).map((cb) => cb.value);
+
+      const isQ5Correct =
+        selectedQ5.length === correctQ5.length &&
+        correctQ5.every((val) => selectedQ5.includes(val));
+
+      if (isQ5Correct) {
+        score++;
+        q5Feedback.textContent =
+          "Correct! Production web servers typically serve static assets, terminate HTTPS, and log traffic.";
+        q5Feedback.classList.add("correct");
+      } else {
+        q5Feedback.innerHTML =
+          '<span class="incorrect">Incorrect.</span> ' +
+          '<span class="answer-key">Correct answers: Serving static assets, terminating HTTPS, and logging requests.</span>';
+      }
+
+      // ---- Overall score + pass/fail ----
+      const passThreshold = 4; // 4 out of 5 to pass
+      const passed = score >= passThreshold;
+
+      resultsSection.classList.remove("hidden");
+      overallResultEl.textContent = passed
+        ? "Pass — great job! ✅"
+        : "Keep reviewing and try again. ❌";
+
+      overallResultEl.className = passed ? "pass" : "fail";
+
+      overallScoreEl.textContent = `You scored ${score} out of ${totalQuestions}. (Pass threshold: ${passThreshold}/5)`;
+
+      detailedResultsEl.innerHTML =
+        "<p>Scroll up to each question to see whether it was correct and to view the answer key.</p>";
+    }
+
+    // Reset/retake: clears all inputs and hides results
+    function resetQuiz() {
+      const form = document.getElementById("quiz-form");
+      form.reset();
+
+      const resultsSection = document.getElementById("results");
+      const overallResultEl = document.getElementById("overall-result");
+      const overallScoreEl = document.getElementById("overall-score");
+      const detailedResultsEl = document.getElementById("detailed-results");
+
+      ["q1", "q2", "q3", "q4", "q5"].forEach((id) => {
+        const fb = document.getElementById(id + "-feedback");
+        if (fb) {
+          fb.textContent = "";
+          fb.className = "question-feedback";
+        }
+      });
+
+      overallResultEl.textContent = "";
+      overallScoreEl.textContent = "";
+      detailedResultsEl.innerHTML = "";
+      resultsSection.classList.add("hidden");
+    }
+</script>
+</body>
+</html>
