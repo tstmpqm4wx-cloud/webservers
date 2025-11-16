@@ -17,10 +17,9 @@
     </div>
 </header>
 
+<!-- ⭐ FIXED NAVIGATION WITH QUIZ LINK INSIDE THE LIST ⭐ -->
 <nav class="site-nav" aria-label="Primary">
     <div class="container">
-    <li><a href="quiz.html">Self-Assessment Quiz</a></li>
-
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
@@ -28,12 +27,14 @@
             <li><a aria-current="page" href="key-concepts.html">Key Concepts</a></li>
             <li><a href="resources.html">References & Resources</a></li>
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="quiz.html">Self-Assessment Quiz</a></li>
         </ul>
     </div>
 </nav>
 
 <main id="main" class="container" role="main">
     <dl class="panel glossary">
+
         <dt>HTTP / HTTPS</dt>
         <dd>Application protocols for web requests/responses; HTTPS adds TLS encryption and integrity.</dd>
 
@@ -69,7 +70,19 @@
 
         <dt>Zero-Trust</dt>
         <dd>Security model that treats every request as untrusted, enforcing continuous verification.</dd>
+
     </dl>
+
+    <!--  NEW MILESTONE #2  -->
+    <p>
+        Modern web servers increasingly rely on containerization and orchestration platforms such as 
+        Docker and Kubernetes. These technologies allow servers to scale rapidly, isolate workloads,
+        and improve the security and reliability of deployed applications. Cloud providers like AWS, 
+        Azure, and Google Cloud run thousands of containerized web server instances to deliver global 
+        content with low latency and high availability. Understanding these technologies is becoming 
+        essential for anyone working with modern web infrastructure.
+    </p>
+
 </main>
 
 <footer class="site-footer" role="contentinfo">
