@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Web Servers — PAGE TITLE HERE</title>
+    <title>Web Servers — Key Concepts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Concise primer on web servers with responsive, mobile-friendly design." />
     <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -17,15 +18,15 @@
     </div>
 </header>
 
-<!-- ⭐ FIXED NAVIGATION WITH QUIZ LINK INSIDE THE LIST ⭐ -->
 <nav class="site-nav" aria-label="Primary">
     <div class="container">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
-            <li><a href="http-lifecycle.html">Roles & Lifecycle</a></li>
+            <li><a href="http-lifecycle.html">HTTP Lifecycle</a></li>
             <li><a aria-current="page" href="key-concepts.html">Key Concepts</a></li>
-            <li><a href="resources.html">References & Resources</a></li>
+            <li><a href="mobile-web-rwd.html">Mobile Web &amp; RWD</a></li>
+            <li><a href="resources.html">References &amp; Resources</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="quiz.html">Self-Assessment Quiz</a></li>
         </ul>
@@ -33,55 +34,65 @@
 </nav>
 
 <main id="main" class="container" role="main">
-    <dl class="panel glossary">
 
-        <dt>HTTP / HTTPS</dt>
-        <dd>Application protocols for web requests/responses; HTTPS adds TLS encryption and integrity.</dd>
+    <section class="card" aria-labelledby="glossary-heading">
+        <h2 id="glossary-heading">Glossary of Key Concepts</h2>
 
-        <dt>CGI (Common Gateway Interface)</dt>
-        <dd>Early mechanism that let servers run programs to generate dynamic content.</dd>
+        <dl class="glossary">
 
-        <dt>Reverse Proxy</dt>
-        <dd>Fronts one or more apps, handling TLS, caching, routing, and load balancing.</dd>
+            <dt>HTTP / HTTPS</dt>
+            <dd>Application protocols for web requests/responses; HTTPS adds TLS encryption and integrity.</dd>
 
-        <dt>Event-Driven Architecture</dt>
-        <dd>Non-blocking I/O model (e.g., Nginx, LiteSpeed) enabling high concurrency.</dd>
+            <dt>CGI (Common Gateway Interface)</dt>
+            <dd>Early mechanism that let servers run programs to generate dynamic content.</dd>
 
-        <dt>HTTP/2 & HTTP/3 (QUIC)</dt>
-        <dd>Modern protocol versions improving latency via multiplexing (H2) and UDP-based QUIC (H3).</dd>
+            <dt>Reverse Proxy</dt>
+            <dd>Fronts one or more apps, handling TLS, caching, routing, and load balancing.</dd>
 
-        <dt>TLS/SSL</dt>
-        <dd>Cryptography for HTTPS; often terminated at the web server; enables HSTS and modern ciphers.</dd>
+            <dt>Event-Driven Architecture</dt>
+            <dd>Non-blocking I/O model (e.g., Nginx, LiteSpeed) enabling high concurrency.</dd>
 
-        <dt>Caching</dt>
-        <dd>Storing responses to serve faster (browser, CDN, reverse proxy) using headers like Cache-Control/ETag.</dd>
+            <dt>HTTP/2 &amp; HTTP/3 (QUIC)</dt>
+            <dd>Modern protocol versions improving latency via multiplexing (H2) and UDP-based QUIC (H3).</dd>
 
-        <dt>Load Balancer</dt>
-        <dd>Distributes traffic across backend instances for scale and resilience.</dd>
+            <dt>TLS/SSL</dt>
+            <dd>Cryptography for HTTPS; often terminated at the web server; enables HSTS and modern ciphers.</dd>
 
-        <dt>Edge Computing / CDN</dt>
-        <dd>Serving content closer to users geographically to reduce latency and absorb traffic.</dd>
+            <dt>Caching</dt>
+            <dd>Storing responses to serve faster using headers like Cache-Control and ETag.</dd>
 
-        <dt>Serverless</dt>
-        <dd>Managed compute where the platform handles scaling; complements or replaces traditional servers for some tasks.</dd>
+            <dt>Load Balancer</dt>
+            <dd>Distributes traffic across backend instances for scale and resilience.</dd>
 
-        <dt>Let’s Encrypt</dt>
-        <dd>Automated certificate authority enabling free TLS certificates and renewals.</dd>
+            <dt>Edge Computing / CDN</dt>
+            <dd>Serving content closer to users geographically to reduce latency and absorb traffic spikes.</dd>
 
-        <dt>Zero-Trust</dt>
-        <dd>Security model that treats every request as untrusted, enforcing continuous verification.</dd>
+            <dt>Serverless</dt>
+            <dd>
+                Managed compute where the platform handles scaling; complements or replaces traditional
+                servers for certain workloads.
+            </dd>
 
-    </dl>
+            <dt>Let’s Encrypt</dt>
+            <dd>Automated certificate authority enabling free TLS certificates and renewals.</dd>
 
-    <!--  NEW MILESTONE #2  -->
-    <p>
-        Modern web servers increasingly rely on containerization and orchestration platforms such as 
-        Docker and Kubernetes. These technologies allow servers to scale rapidly, isolate workloads,
-        and improve the security and reliability of deployed applications. Cloud providers like AWS, 
-        Azure, and Google Cloud run thousands of containerized web server instances to deliver global 
-        content with low latency and high availability. Understanding these technologies is becoming 
-        essential for anyone working with modern web infrastructure.
-    </p>
+            <dt>Zero-Trust</dt>
+            <dd>Security model that treats every request as untrusted, enforcing continuous verification.</dd>
+
+        </dl>
+    </section>
+
+    <section class="card">
+        <h2>Modern Architecture Add-On</h2>
+        <p>
+            Modern web servers increasingly rely on containerization and orchestration platforms such as
+            Docker and Kubernetes. These technologies allow servers to scale rapidly, isolate workloads,
+            and improve the security and reliability of deployed applications. Cloud providers like AWS,
+            Azure, and Google Cloud run thousands of containerized web server instances to deliver global
+            content with low latency and high availability. Understanding these technologies is becoming
+            essential for anyone working with modern web infrastructure.
+        </p>
+    </section>
 
 </main>
 
@@ -90,5 +101,6 @@
         <p><small>Back to <a href="index.html">Home</a></small></p>
     </div>
 </footer>
+
 </body>
 </html>
