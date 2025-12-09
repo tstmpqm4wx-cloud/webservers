@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Web Servers — PAGE TITLE HERE</title>
+    <title>Web Servers — What Is a Web Server?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Concise primer on web servers with responsive, mobile-friendly design." />
+    <meta name="description" content="Definition, history, and competitive landscape of modern web servers." />
     <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -19,43 +20,64 @@
 
 <nav class="site-nav" aria-label="Primary">
     <div class="container">
-    <li><a href="quiz.html">Self-Assessment Quiz</a></li>
-     <ul>
+        <ul>
             <li><a href="index.html">Home</a></li>
             <li><a aria-current="page" href="what-is-a-web-server.html">What Is a Web Server?</a></li>
-            <li><a href="http-lifecycle.html">Roles & Lifecycle</a></li>
+            <li><a href="http-lifecycle.html">HTTP Lifecycle</a></li>
             <li><a href="key-concepts.html">Key Concepts</a></li>
-            <li><a href="resources.html">References & Resources</a></li>
+            <li><a href="mobile-web-rwd.html">Mobile Web &amp; RWD</a></li>
+            <li><a href="resources.html">References &amp; Resources</a></li>
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="quiz.html">Self-Assessment Quiz</a></li>
         </ul>
     </div>
 </nav>
 
 <main id="main" class="container" role="main">
-    <article class="panel" aria-labelledby="def-heading">
+    <article class="card" aria-labelledby="def-heading">
         <h2 id="def-heading">Definition</h2>
         <p>
-            A web server is a software application (often on dedicated hardware) that receives and processes requests from clients—most commonly web browsers—using protocols such as HTTP or HTTPS. When a browser sends a request for a page, image, or other resource, the server locates or generates that resource and returns a response. Web servers power websites, APIs, and apps, shaping speed, security, and reliability (see Works Cited).
+            A web server is a software application (often on dedicated hardware) that receives and processes
+            requests from clients—most commonly web browsers—using protocols such as HTTP or HTTPS. When a
+            browser sends a request for a page, image, or other resource, the server locates or generates that
+            resource and returns a response. Web servers power websites, APIs, and apps, shaping speed, security,
+            and reliability (see Works Cited).
         </p>
     </article>
 
-    <article class="panel" aria-labelledby="history-heading">
-        <h2 id="history-heading">Origins & Evolution</h2>
+    <article class="card" aria-labelledby="history-heading">
+        <h2 id="history-heading">Origins &amp; Evolution</h2>
         <p>
-            The origins of web servers trace back to the early 1990s, when Tim Berners-Lee at CERN created CERN httpd to serve static HTML pages for the nascent Web. As usage expanded beyond scientists, performance and interactivity grew crucial. NCSA HTTPd introduced CGI, allowing server-side scripts to generate dynamic content—marking the transition from static pages to interactive applications.
+            The origins of web servers trace back to the early 1990s, when Tim Berners-Lee at CERN created CERN
+            httpd to serve static HTML pages for the nascent Web. As usage expanded beyond scientists,
+            performance and interactivity grew crucial. NCSA HTTPd introduced CGI, allowing server-side scripts
+            to generate dynamic content—marking the transition from static pages to interactive applications.
         </p>
         <p>
-            By 1995, Apache HTTP Server emerged as the leading open-source project. Its modular design, community support, and flexibility made it the standard for over a decade. Microsoft’s IIS integrated tightly with Windows for organizations preferring proprietary stacks. In the 2000s, heavier dynamic content exposed the limits of process-based servers like Apache. Nginx introduced an event-driven architecture capable of handling thousands of concurrent connections efficiently, becoming a favorite for high-traffic sites. LiteSpeed later offered high performance with Apache config compatibility and early QUIC/HTTP/3 support.
+            By 1995, Apache HTTP Server emerged as the leading open-source project. Its modular design, community
+            support, and flexibility made it the standard for over a decade. Microsoft’s IIS integrated tightly
+            with Windows for organizations preferring proprietary stacks. In the 2000s, heavier dynamic content
+            exposed the limits of process-based servers like Apache. Nginx introduced an event-driven
+            architecture capable of handling thousands of concurrent connections efficiently, becoming a favorite
+            for high-traffic sites. LiteSpeed later offered high performance with Apache config compatibility and
+            early QUIC/HTTP/3 support.
         </p>
         <p>
-            According to WebHostMost, LiteSpeed can handle more concurrent requests than Apache or Nginx under heavy load and was among the first with QUIC, the protocol underlying HTTP/3. Demand and traffic growth accelerated these advancements.
+            According to WebHostMost, LiteSpeed can handle more concurrent requests than Apache or Nginx under
+            heavy load and was among the first with QUIC, the protocol underlying HTTP/3. Demand and traffic
+            growth accelerated these advancements.
         </p>
     </article>
 
-    <article class="panel" aria-labelledby="market-heading">
+    <article class="card" aria-labelledby="market-heading">
         <h2 id="market-heading">Modern Landscape</h2>
         <p>
-            Today the market is diverse and competitive. Apache remains popular for configurability and community. Nginx dominates many high-traffic deployments thanks to efficiency and its reverse proxy role. LiteSpeed excels for PHP with built-in caching like LSCache and robust HTTP/3. Microsoft IIS, Caddy, and lightweight servers such as Hiawatha serve niche/enterprise needs. Trends include HTTP/2 and HTTP/3/QUIC adoption, cloud/CDN distribution, Kubernetes-based deployments, and edge computing to reduce latency.
+            Today the market is diverse and competitive. Apache remains popular for configurability and
+            community. Nginx dominates many high-traffic deployments thanks to efficiency and its reverse proxy
+            role. LiteSpeed excels for PHP with built-in caching like LSCache and robust HTTP/3. Microsoft IIS,
+            Caddy, and lightweight servers such as Hiawatha serve niche or enterprise needs. Trends include
+            HTTP/2 and HTTP/3/QUIC adoption, cloud/CDN distribution, Kubernetes-based deployments, and edge
+            computing to reduce latency.
         </p>
     </article>
 </main>
@@ -65,5 +87,6 @@
         <p><small>Back to <a href="index.html">Home</a></small></p>
     </div>
 </footer>
+
 </body>
 </html>
