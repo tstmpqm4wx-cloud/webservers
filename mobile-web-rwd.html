@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Web Servers — Mobile Web & RWD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How responsive web design, mobile web, and UX principles are applied to this web servers site." />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <h1>Mobile Web & Responsive Design</h1>
+        <p class="tagline">How I made this web servers site mobile-friendly</p>
+    </div>
+</header>
+
+<nav class="site-nav" aria-label="Primary">
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
+            <li><a href="http-lifecycle.html">HTTP Lifecycle</a></li>
+            <li><a href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="mobile-web-rwd.html" aria-current="page">Mobile Web & RWD</a></li>
+            <li><a href="resources.html">References & Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="quiz.html">Self-Assessment Quiz</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main" class="container">
+
+    <section class="card">
+        <h2>Responsive Web Design (RWD)</h2>
+        <p>
+            Responsive Web Design means building one website that automatically adapts its layout
+            and presentation to different screen sizes and orientations. Instead of creating
+            separate “mobile” and “desktop” sites, the same HTML is styled with flexible layouts,
+            images that scale, and CSS media queries so the page stays usable on phones, tablets,
+            laptops, and large monitors.
+        </p>
+        <p>
+            In this project, I used a mobile-first approach. The default CSS targets small screens,
+            and then media queries at 768px and 1024px refine the layout for tablets and desktops.
+            The navigation switches from a stacked vertical list on mobile to a horizontal bar on
+            larger screens. Headings, paragraphs, and tables are styled with spacing and font sizes
+            that remain readable at any width.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Mobile Web Considerations</h2>
+        <p>
+            Mobile users work with smaller screens, touch input, and sometimes slower or unstable
+            networks. Because of this, pages should be as lightweight as possible, load quickly,
+            and avoid layouts that require horizontal scrolling or tiny tap areas. A simple,
+            single-column layout on small screens makes it easier to read and scroll.
+        </p>
+        <p>
+            On this web servers site, content flows in one column on small devices, images never
+            overflow the viewport, and tables stretch to the available width. Buttons and links
+            use enough padding to be tapped easily with a thumb, and the color contrast between
+            text and background is strong enough for different lighting conditions. These choices
+            help the site stay usable on real mobile devices, not just on a desktop monitor.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>User Experience (UX) on Mobile</h2>
+        <p>
+            Good mobile UX focuses on clarity and ease of use. Text should be concise and scannable,
+            headings should clearly separate topics, and navigation should be consistent on every
+            page. Touch users also expect clear feedback, large tap targets, and layouts that do
+            not require precision clicking.
+        </p>
+        <p>
+            For this site, I used a consistent header and navigation bar so visitors always know
+            where they are and how to move to other sections. The main menu appears in the same
+            place, and the current page is highlighted using the
+            <code>aria-current="page"</code> attribute. Content is broken into short sections with
+            headings and card-style boxes so important ideas stand out and are easier to read on a
+            phone.
+        </p>
+    </section>
+
+    <section class="card layout-two-column">
+        <div>
+            <h2>How This Supports the Web Servers Topic</h2>
+            <p>
+                The main goal of this project is to explain web servers: what they are, what they
+                do, and why they matter. Applying responsive and mobile-friendly design makes that
+                information much more accessible. Students and readers can review concepts about
+                server roles, HTTP lifecycle, security, and performance comfortably on whatever
+                device they have with them.
+            </p>
+        </div>
+        <aside>
+            <h3>Concrete Changes Implemented</h3>
+            <ul>
+                <li>Added the viewport meta tag to every HTML page.</li>
+                <li>Created a mobile-first CSS file with media queries at 768px and 1024px.</li>
+                <li>Used a consistent, touch-friendly navigation menu across the site.</li>
+                <li>Made images and tables scale to the device width to avoid horizontal scrolling.</li>
+                <li>Adjusted font sizes and spacing to stay readable on small and large screens.</li>
+            </ul>
+        </aside>
+    </section>
+
+</main>
+
+</body>
+</html>
