@@ -1,289 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Web Servers — PAGE TITLE HERE</title>
+    <title>Web Servers — Self-Assessment Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Concise primer on web servers with responsive, mobile-friendly design." />
+    <meta name="description" content="Interactive self-assessment quiz on web servers, protocols, and server responsibilities." />
     <link rel="stylesheet" href="css/styles.css" />
-</head>
+
+    <!-- Quiz-specific styles (no layout overrides) -->
     <style>
-        /* ====== Basic page layout ====== */
-        body {
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          margin: 0;
-          background: #0d1117;
-          color: #e6edf3;
-          line-height: 1.6;
-        }
-
-        header {
-          background: #161b22;
-          border-bottom: 1px solid #30363d;
-          padding: 1rem 1.5rem;
-        }
-
-        header h1 {
-          margin: 0;
-          font-size: 1.4rem;
-        }
-
-        header p {
-          margin: 0.25rem 0 0;
-          font-size: 0.9rem;
-          color: #8b949e;
-        }
-
-        nav {
-          margin-top: 0.75rem;
-        }
-
-        nav ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-
-        nav a {
-          text-decoration: none;
-          color: #c9d1d9;
-          padding: 0.35rem 0.75rem;
-          border-radius: 999px;
-          font-size: 0.9rem;
-          border: 1px solid transparent;
-        }
-
-        nav a:hover {
-          background: #21262d;
-          border-color: #30363d;
-        }
-
-        nav a.active {
-          background: #1f6feb;
-          color: #f0f6fc;
-          border-color: #1f6feb;
-        }
-
-        main {
-          max-width: 900px;
-          margin: 2rem auto;
-          padding: 0 1.25rem 3rem;
-        }
-
-        h2 {
-          margin-top: 0;
-          font-size: 1.6rem;
-        }
-
         .intro {
-          margin-bottom: 1.5rem;
-          color: #8b949e;
+            margin-bottom: 1.5rem;
+            color: #9ca3af;
         }
 
-        /* ====== Card-style container for the quiz ====== */
-        .card {
-          background: #161b22;
-          border: 1px solid #30363d;
-          border-radius: 0.75rem;
-          padding: 1.5rem;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-        }
-
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
+        .quiz-card {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
         }
 
         fieldset {
-          border: 1px solid #30363d;
-          border-radius: 0.75rem;
-          padding: 1rem 1.25rem 1.1rem;
+            border: 1px solid #1f2937;
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem 1.1rem;
         }
 
         legend {
-          padding: 0 0.35rem;
-          font-weight: 600;
+            padding: 0 0.35rem;
+            font-weight: 600;
         }
 
         .question-text {
-          margin-bottom: 0.5rem;
-          font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .hint {
-          font-size: 0.85rem;
-          color: #8b949e;
-          margin-top: 0.25rem;
-        }
-
-        label {
-          display: block;
-          cursor: pointer;
-          margin: 0.25rem 0;
-        }
-
-        input[type="text"] {
-          width: 100%;
-          max-width: 420px;
-          padding: 0.45rem 0.6rem;
-          border-radius: 0.5rem;
-          border: 1px solid #30363d;
-          background: #0d1117;
-          color: #e6edf3;
-          font-size: 0.95rem;
-        }
-
-        input[type="text"]:focus {
-          outline: none;
-          border-color: #1f6feb;
-          box-shadow: 0 0 0 1px #1f6feb;
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
         }
 
         .options-group {
-          margin-top: 0.35rem;
+            margin-top: 0.35rem;
         }
 
         .options-group label {
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          padding: 0.25rem 0.35rem;
-          border-radius: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.35rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
         }
 
         .options-group label:hover {
-          background: #21262d;
+            background: #111827;
         }
 
-        input[type="radio"],
-        input[type="checkbox"] {
-          accent-color: #1f6feb;
-        }
-
-        /* ====== Buttons ====== */
         .button-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.75rem;
-          margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
-        button {
-          border: none;
-          border-radius: 999px;
-          padding: 0.55rem 1.2rem;
-          font-size: 0.95rem;
-          cursor: pointer;
-          font-weight: 500;
+        .btn-primary,
+        .btn-ghost {
+            border-radius: 999px;
+            padding: 0.55rem 1.2rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: 500;
         }
 
         .btn-primary {
-          background: #1f6feb;
-          color: #f0f6fc;
+            background: #2563eb;
+            color: #f9fafb;
+            border: 1px solid #2563eb;
         }
 
         .btn-primary:hover {
-          background: #265dc8;
+            background: #1d4ed8;
         }
 
         .btn-ghost {
-          background: transparent;
-          color: #c9d1d9;
-          border: 1px solid #30363d;
+            background: transparent;
+            color: #e5e7eb;
+            border: 1px solid #374151;
         }
 
         .btn-ghost:hover {
-          background: #21262d;
+            background: #111827;
         }
 
-        /* ====== Results ====== */
         .hidden {
-          display: none;
+            display: none;
         }
 
         #results {
-          margin-top: 1.5rem;
-          padding: 1.25rem 1.5rem;
-          border-radius: 0.75rem;
-          border: 1px solid #30363d;
-          background: #0d1117;
+            margin-top: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #1f2937;
+            background: #020617;
         }
 
         #overall-result {
-          font-size: 1.1rem;
-          margin-bottom: 0.25rem;
-          font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
         }
 
         #overall-score {
-          margin-bottom: 0.75rem;
-          color: #8b949e;
+            margin-bottom: 0.75rem;
+            color: #9ca3af;
         }
 
         .pass {
-          color: #3fb950;
+            color: #22c55e;
         }
 
         .fail {
-          color: #f85149;
+            color: #f97373;
         }
 
         .question-feedback {
-          margin-top: 0.35rem;
-          font-size: 0.9rem;
+            margin-top: 0.35rem;
+            font-size: 0.9rem;
         }
 
         .correct {
-          color: #3fb950;
+            color: #22c55e;
         }
 
         .incorrect {
-          color: #f85149;
+            color: #f97373;
         }
 
         .answer-key {
-          color: #8b949e;
-          font-size: 0.85rem;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         @media (max-width: 600px) {
-          .card {
-            padding: 1.1rem;
-          }
+            .quiz-card {
+                padding: 1.1rem;
+            }
         }
     </style>
 </head>
-<body>
-<header>
-    <h1>Web Servers — Foundations &amp; Evolution</h1>
-    <p>IT 3203 • Milestone #2 — Dynamic Frontend Quiz</p>
 
-    <!-- Update this menu to match your other pages -->
-    <nav aria-label="Main navigation">
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+    <div class="container">
+        <h1>Self-Assessment Quiz</h1>
+        <p class="tagline">Check your understanding of web servers, protocols, and responsibilities</p>
+    </div>
+</header>
+
+<nav class="site-nav" aria-label="Primary">
+    <div class="container">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="what-is-a-web-server.html">What Is a Web Server?</a></li>
-            <li><a href="roles-lifecycle.html">Roles &amp; Lifecycle</a></li>
+            <li><a href="http-lifecycle.html">HTTP Lifecycle</a></li>
             <li><a href="key-concepts.html">Key Concepts</a></li>
-            <li><a href="references.html">References &amp; Resources</a></li>
+            <li><a href="mobile-web-rwd.html">Mobile Web &amp; RWD</a></li>
+            <li><a href="resources.html">References &amp; Resources</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="quiz.html" class="active">Self-Assessment Quiz</a></li>
+            <li><a aria-current="page" href="quiz.html">Self-Assessment Quiz</a></li>
         </ul>
-    </nav>
-</header>
+    </div>
+</nav>
 
-<main>
+<main id="main" class="container" role="main">
     <h2>Self-Assessment Quiz</h2>
     <p class="intro">
         Test your understanding of web servers after reading the content on this site.
         Your score and detailed feedback for each question will appear immediately after you submit.
     </p>
 
-    <section class="card" aria-label="Web servers quiz">
+    <section class="card quiz-card" aria-label="Web servers quiz">
         <form id="quiz-form">
             <!-- Q1: Fill-in-the-blank -->
             <fieldset>
@@ -294,11 +205,11 @@
                 </p>
                 <label for="q1-input" class="sr-only">Protocol name</label>
                 <input
-                        type="text"
-                        id="q1-input"
-                        name="q1"
-                        autocomplete="off"
-                        placeholder="Type the protocol acronym (e.g., HTTP)"
+                    type="text"
+                    id="q1-input"
+                    name="q1"
+                    autocomplete="off"
+                    placeholder="Type the protocol acronym (e.g., HTTP)"
                 />
                 <p class="hint">Hint: It’s the core application-layer protocol of the web.</p>
                 <div id="q1-feedback" class="question-feedback"></div>
@@ -441,9 +352,13 @@
     </section>
 </main>
 
-<script>
-    // ===== Quiz grading logic =====
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <p><small>Back to <a href="index.html">Home</a></small></p>
+    </div>
+</footer>
 
+<script>
     function gradeQuiz() {
       const form = document.getElementById("quiz-form");
       const resultsSection = document.getElementById("results");
@@ -451,7 +366,6 @@
       const overallScoreEl = document.getElementById("overall-score");
       const detailedResultsEl = document.getElementById("detailed-results");
 
-      // Clear old feedback
       ["q1", "q2", "q3", "q4", "q5"].forEach((id) => {
         const fb = document.getElementById(id + "-feedback");
         if (fb) {
@@ -466,7 +380,7 @@
       let score = 0;
       const totalQuestions = 5;
 
-      // ---- Question 1 (fill in the blank) ----
+      // Q1
       const q1Input = form.q1.value.trim().toLowerCase();
       const q1Feedback = document.getElementById("q1-feedback");
       const correctQ1 = "http";
@@ -481,7 +395,7 @@
           '<span class="answer-key">Correct answer: HTTP.</span>';
       }
 
-      // ---- Question 2 (single choice) ----
+      // Q2
       const q2Value = form.q2.value;
       const q2Feedback = document.getElementById("q2-feedback");
       const correctQ2 = "b";
@@ -494,12 +408,10 @@
       } else {
         q2Feedback.innerHTML =
           '<span class="incorrect">Incorrect.</span> ' +
-          '<span class="answer-key">Correct answer: ' +
-          "Software running on a machine that receives HTTP requests and returns web content." +
-          "</span>";
+          '<span class="answer-key">Correct answer: Software running on a machine that receives HTTP requests and returns web content.</span>';
       }
 
-      // ---- Question 3 (single choice) ----
+      // Q3
       const q3Value = form.q3.value;
       const q3Feedback = document.getElementById("q3-feedback");
       const correctQ3 = "b";
@@ -515,7 +427,7 @@
           '<span class="answer-key">Correct answer: Returning pre-existing files without modifying them per user.</span>';
       }
 
-      // ---- Question 4 (single choice) ----
+      // Q4
       const q4Value = form.q4.value;
       const q4Feedback = document.getElementById("q4-feedback");
       const correctQ4 = "b";
@@ -531,9 +443,9 @@
           '<span class="answer-key">Correct answer: How many requests per second the server can handle while staying responsive.</span>';
       }
 
-      // ---- Question 5 (multi-select) ----
+      // Q5
       const q5Feedback = document.getElementById("q5-feedback");
-      const correctQ5 = ["static", "https", "logging"]; // all of these, and only these, must be selected
+      const correctQ5 = ["static", "https", "logging"];
 
       const selectedQ5 = Array.from(
         form.querySelectorAll('input[name="q5"]:checked')
@@ -554,8 +466,8 @@
           '<span class="answer-key">Correct answers: Serving static assets, terminating HTTPS, and logging requests.</span>';
       }
 
-      // ---- Overall score + pass/fail ----
-      const passThreshold = 4; // 4 out of 5 to pass
+      // Overall
+      const passThreshold = 4;
       const passed = score >= passThreshold;
 
       resultsSection.classList.remove("hidden");
@@ -564,14 +476,12 @@
         : "Keep reviewing and try again. ❌";
 
       overallResultEl.className = passed ? "pass" : "fail";
-
       overallScoreEl.textContent = `You scored ${score} out of ${totalQuestions}. (Pass threshold: ${passThreshold}/5)`;
 
       detailedResultsEl.innerHTML =
         "<p>Scroll up to each question to see whether it was correct and to view the answer key.</p>";
     }
 
-    // Reset/retake: clears all inputs and hides results
     function resetQuiz() {
       const form = document.getElementById("quiz-form");
       form.reset();
@@ -595,5 +505,6 @@
       resultsSection.classList.add("hidden");
     }
 </script>
+
 </body>
 </html>
