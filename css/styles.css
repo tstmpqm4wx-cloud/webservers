@@ -1,0 +1,268 @@
+/* typography */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    background: #020617;           /* dark navy */
+    color: #e5e7eb;                /* light gray */
+}
+
+/* Links */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+/* Layout */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+main {
+    padding: 1.5rem 0 3rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Cards (for FAQ, key concepts, quiz, etc.) */
+.card,
+.quiz-card {
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Header & Navigation */
+.site-header {
+    background: #0b1120;
+    border-bottom: 1px solid #1f2937;
+    padding: 1.5rem 0;
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.6rem;
+}
+
+.site-header .tagline {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    background: #020617;
+    border-bottom: 1px solid #1f2937;
+}
+
+.site-nav .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;   /* mobile: stacked menu */
+    gap: 0.5rem;
+}
+
+.site-nav li {
+    margin: 0;
+}
+
+.site-nav a {
+    display: block;
+    padding: 0.55rem 0.9rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    background: #020617;
+    border: 1px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus,
+.site-nav a[aria-current="page"] {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+}
+.skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+    background: #111827;
+    color: #f9fafb;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    z-index: 1000;
+}
+
+/* Typography & content  */
+h1, h2, h3, h4 {
+    color: #f9fafb;
+    margin-top: 0;
+}
+
+p {
+    margin: 0 0 0.75rem 0;
+}
+
+ul, ol {
+    margin: 0 0 1rem 1.5rem;
+    padding: 0;
+}
+
+/* Tables for references / lifecycle steps */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    border: 1px solid #1f2937;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+th {
+    background: #0f172a;
+}
+
+/* Images are responsive automatically */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+/* ========= Forms & Quiz ========= */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #374151;
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 1rem;
+}
+
+button,
+input[type="submit"] {
+    padding: 0.6rem 0.95rem;
+    border-radius: 0.5rem;
+    border: 1px solid #2563eb;
+    background: #2563eb;
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+/* Utility layout: */
+.layout-two-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/*  Responsive breakpoints  */
+
+/* Medium screens: tablet & up */
+@media (min-width: 768px) {
+
+    body {
+        font-size: 1rem;
+    }
+
+    .site-header h1 {
+        font-size: 2rem;
+    }
+
+    /* Nav becomes horizontal on tablet/desktop */
+    .site-nav ul {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .site-nav a {
+        width: auto;
+    }
+
+    /* Optional: 2-column layout */
+    .layout-two-column {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .layout-two-column > * {
+        flex: 1;
+    }
+
+    main {
+        padding: 2rem 0 3.5rem;
+    }
+}
+
+/* Large screens: wide desktop */
+@media (min-width: 1024px) {
+
+    body {
+        font-size: 1.05rem;
+    }
+
+    .site-header {
+        padding: 2rem 0;
+    }
+
+    .site-nav ul {
+        justify-content: center;
+        gap: 0.75rem;
+    }
+}
